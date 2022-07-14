@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/pomgraaf/static/css/main.43fcab66.css",
-    "main.js": "/pomgraaf/static/js/main.8609dd3f.js",
-    "index.html": "/pomgraaf/index.html",
-    "main.43fcab66.css.map": "/pomgraaf/static/css/main.43fcab66.css.map",
-    "main.8609dd3f.js.map": "/pomgraaf/static/js/main.8609dd3f.js.map"
+    "main.css": "/POMgraaf/static/css/main.43fcab66.css",
+    "main.js": "/POMgraaf/static/js/main.8609dd3f.js",
+    "index.html": "/POMgraaf/index.html",
+    "main.43fcab66.css.map": "/POMgraaf/static/css/main.43fcab66.css.map",
+    "main.8609dd3f.js.map": "/POMgraaf/static/js/main.8609dd3f.js.map"
   },
   "entrypoints": [
     "static/css/main.43fcab66.css",
