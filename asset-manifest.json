@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/POMgraaf/static/css/main.43fcab66.css",
-    "main.js": "/POMgraaf/static/js/main.8609dd3f.js",
+    "main.css": "/POMgraaf/static/css/main.bbf3dd15.css",
+    "main.js": "/POMgraaf/static/js/main.07300d65.js",
     "index.html": "/POMgraaf/index.html",
-    "main.43fcab66.css.map": "/POMgraaf/static/css/main.43fcab66.css.map",
-    "main.8609dd3f.js.map": "/POMgraaf/static/js/main.8609dd3f.js.map"
+    "main.bbf3dd15.css.map": "/POMgraaf/static/css/main.bbf3dd15.css.map",
+    "main.07300d65.js.map": "/POMgraaf/static/js/main.07300d65.js.map"
   },
   "entrypoints": [
-    "static/css/main.43fcab66.css",
-    "static/js/main.8609dd3f.js"
+    "static/css/main.bbf3dd15.css",
+    "static/js/main.07300d65.js"
   ]
 }
