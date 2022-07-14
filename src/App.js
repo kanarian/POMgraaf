@@ -10,6 +10,8 @@ function App() {
   const [selectedUser, setSelectedUser] = useState({})
   const [draggable, setDraggable] = useState(false);
 
+  const [lowPerformanceMode, setLowPerformanceMode] = useState(false);
+
   // it should not be needed to initialize this in the useEffect hook, but if I dont do it, it doesnt work
   useEffect(() => {
     setGraphData({nodes: nodes, links: links})
@@ -40,9 +42,9 @@ function App() {
       fgRef.current.cameraPosition(
         { x: selectedUserNode.x * distRatio, y: selectedUserNode.y * distRatio, z: selectedUserNode.z * distRatio }, // new position
         selectedUserNode, // lookAt ({ x, y, z })
-        3000  // ms transition duration
-      );
-    }}, [selectedUser, graphData.nodes])
+        lowPerformanceMode ? 0 : 3000  // ms transition duration
+      )
+    }}, [selectedUser, graphData.nodes, lowPerformanceMode])
   
   const dropdownOptions = nodes.map(entry => {return {value: entry.id, label: entry.name[0]}})
 
@@ -58,6 +60,10 @@ function App() {
           <div className='header-elt'>
             <p>Draggable?</p>
             <input type="checkbox" onChange={() => setDraggable(!draggable)}/>
+          </div>
+          <div className='header-elt'>
+            <p>Low Performance?</p>
+            <input type="checkbox" onChange={() => setLowPerformanceMode(!lowPerformanceMode)}/>
           </div>
           <div className='username-finder header-elt'>
             <p><strong>Zoek een user:</strong></p>
@@ -79,6 +85,14 @@ function App() {
         linkColor = {x => 'white'}
         linkWidth = {x => x.value/10}
         enableNodeDrag = {draggable}
+        nodeResolution = {lowPerformanceMode ? 3 : 8}
+        linkResolution = {lowPerformanceMode ? 3 : 6}
+        pauseSimulation = {lowPerformanceMode}
+        pauseAnimation = {lowPerformanceMode}
+        linkDirectionalParticleSpeed = {lowPerformanceMode ? 0 : 0.1}
+        warmupTicks = {lowPerformanceMode ? 100 : 0}
+        cooldownTicks = {lowPerformanceMode ? 0 : 1500}
+        
         />
       </div>
   );
