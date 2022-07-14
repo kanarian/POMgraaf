@@ -9,6 +9,7 @@ import nodes from './data/users.json';
 function App() {
   const [graphData,setGraphData] = useState({nodes: nodes, links: links})
   const [selectedUser, setSelectedUser] = useState({})
+  const [draggable, setDraggable] = useState(false);
 
 
   // it should not be needed to initialize this in the useEffect hook, but if I dont do it, it doesnt work
@@ -44,7 +45,11 @@ function App() {
           <h1>POM telegram groep interactie graaf</h1>
           <p>Users zijn gelinkt wanneer er minstens een reply interactie tussen hen is geweest. Hoe dikker de lijn, hoe meer interacties.</p>
           </div>
-          <div className='username-finder'>
+          <div className='header-elt'>
+            <p>Draggable?</p>
+            <input type="checkbox" onChange={() => setDraggable(!draggable)}/>
+          </div>
+          <div className='username-finder header-elt'>
             <p><strong>Zoek een user:</strong></p>
             <Select 
               onChange={e=>setSelectedUser(e)}
@@ -63,6 +68,7 @@ function App() {
         nodeColor = {x => x.id === selectedUser.value ? 'yellow' : '#df7a64'}
         linkColor = {x => 'white'}
         linkWidth = {x => x.value/10}
+        enableNodeDrag = {draggable}
         />
       </div>
   );

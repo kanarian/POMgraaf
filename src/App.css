@@ -19,7 +19,7 @@ body{
   margin: 0px 20px;
 }
 
-.username-finder{
+.header-elt{
   font-size:1em;
   display: flex;
   align-items: center;
