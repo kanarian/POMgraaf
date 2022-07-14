@@ -5,23 +5,34 @@ import Select from 'react-select';
 import links from './data/links.json';
 import nodes from './data/users.json';
 
-
 function App() {
   const [graphData,setGraphData] = useState({nodes: nodes, links: links})
   const [selectedUser, setSelectedUser] = useState({})
 
-
   // it should not be needed to initialize this in the useEffect hook, but if I dont do it, it doesnt work
   useEffect(() => {
     setGraphData({nodes: nodes, links: links})
-  }, [])
 
+    // Read the selected user from the query string [?user=]
+    const selectedUserId = window.location.search.split('user=')[1]
+    if (selectedUserId) {
+      // Wait for the graph to be rendered
+      setTimeout(() => {
+        setSelectedUser({"value":selectedUserId})
+      }, 1000)
+    }
+
+  }, [])
 
   // when the selected user changes, the camera should pan to that position.
   useEffect( () => {
     if (selectedUser.value !== undefined){
-      console.log(selectedUser)
       var selectedUserNode = graphData.nodes.find(x => x.id === selectedUser.value);
+
+      // Push the selected user to a query parameter in the URL
+      window.history.pushState(null, null, `?user=${selectedUser.value}`)
+      // window.history.pushState({}, '', process.env.PUBLIC_URL+`/user/${selectedUser.value}`);
+
       console.log(selectedUserNode)
       const distance = 70;
       const distRatio = 1 + distance/Math.hypot(selectedUserNode.x, selectedUserNode.y, selectedUserNode.z);
@@ -30,9 +41,8 @@ function App() {
         selectedUserNode, // lookAt ({ x, y, z })
         3000  // ms transition duration
       );
-    }}, [selectedUser])
+    }}, [selectedUser, graphData.nodes])
   
-
   const dropdownOptions = nodes.map(entry => {return {value: entry.id, label: entry.name[0]}})
 
   const fgRef = useRef();
