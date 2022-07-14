@@ -51,6 +51,9 @@ function App() {
   return (
       <div className='App'>
         <div className='header'>
+          <div className="header-elt logo">
+            <img src={process.env.PUBLIC_URL+"/pom-graaf.png"} alt="POM Graaf" />
+          </div>
           <div>
           <h1>POM telegram groep interactie graaf</h1>
           <p>Users zijn gelinkt wanneer er minstens een reply interactie tussen hen is geweest. Hoe dikker de lijn, hoe meer interacties.</p>
